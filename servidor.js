@@ -7,7 +7,12 @@
 var http = require("http");
 var url = require("url");
 
-function iniciar(rota){
+/**
+ * Método principal, iniciar o servidor
+ * @param {Function} rota Função de roteamento
+ * @param {Array} manipuladores Lista Array de Manipuladores de Requisição 
+ */
+function iniciar(rota, manipuladores){
 	/**
 	 * Método de requisição
 	 * @param {Object} request Objeto callback da requisição
@@ -17,11 +22,12 @@ function iniciar(rota){
 		var nomePasta = url.parse(request.url).pathname;
 		console.log("Requisição recebida...");
 		
-		rota(nomePasta);
+		rota(nomePasta, manipuladores);
 		
 		response.writeHead(200, {"Content-Type" : "text/plain"});
 		response.write("Hello Word");
 		response.end();
+		console.log("\n\n");
 	};
 	
 	/**
