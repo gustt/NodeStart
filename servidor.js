@@ -20,18 +20,26 @@ function iniciar(rota, manipuladores){
 	 */
 	var aoRequerer =  function (request, response){
 		var nomePasta = url.parse(request.url).pathname;
+		var dadosPostados = "";
+		console.log("\n\n\n╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦")
 		console.log("Requisição recebida...");
 		
-		var resposta = 	rota(nomePasta, manipuladores, response);
+		request.setEncoding("utf8");
+		request.addListener("data", function(parteDadosPostados){
+			dadosPostados += parteDadosPostados;
+			console.log("» » Dados foram recebidos: \n '" + parteDadosPostados + "'");
+		})
 		
-		console.log("\n\n");
+		request.addListener("end", function(){
+			rota(nomePasta, manipuladores, response, dadosPostados);		
+		})
 	};
 	
 	/**
 	 * Executa servidor HTTP
 	 */
 	http.createServer(aoRequerer).listen(666);
-	console.log("Servidor iniciado...");
+	console.log("Servidor iniciado...\n\n");
 }
 
 exports.iniciar = iniciar;

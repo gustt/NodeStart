@@ -1,0 +1,47 @@
+info it worked if it ends with ok
+verbose cli [ 'C:\\Arquivos de programas\\nodejs\\\\node.exe',
+verbose cli   'C:\\Arquivos de programas\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+verbose cli   'install',
+verbose cli   'formidable' ]
+info using npm@1.1.0-1
+info using node@v0.6.7
+verbose config file C:\Documents and Settings\prog5\.npmrc
+verbose config file C:\Arquivos de programas\nodejs\etc\npmrc
+verbose config file C:\Arquivos de programas\nodejs\node_modules\npm\npmrc
+verbose mkdir done: C:\Arquivos de programas\nodejs 755
+verbose mkdir done: C:\Git\NodeStart 755
+verbose cache add [ 'formidable', null ]
+silly cache add: name, spec, args [ undefined, 'formidable', [ 'formidable', null ] ]
+verbose parsed url { pathname: 'formidable',
+verbose parsed url   path: 'formidable',
+verbose parsed url   href: 'formidable' }
+verbose addNamed [ 'formidable', '' ]
+verbose addNamed [ null, '' ]
+silly name, range, hasData [ 'formidable', '', false ]
+verbose raw, before any munging formidable
+verbose url resolving [ 'https://registry.npmjs.org/', './formidable' ]
+verbose url resolved https://registry.npmjs.org/formidable
+http GET https://registry.npmjs.org/formidable
+ERR! Error: failed to fetch from registry: formidable
+ERR!     at C:\Arquivos de programas\nodejs\node_modules\npm\lib\utils\npm-registry-client\get.js:139:12
+ERR!     at cb (C:\Arquivos de programas\nodejs\node_modules\npm\lib\utils\npm-registry-client\request.js:32:9)
+ERR!     at Request._callback (C:\Arquivos de programas\nodejs\node_modules\npm\lib\utils\npm-registry-client\request.js:137:18)
+ERR!     at Request.callback (C:\Arquivos de programas\nodejs\node_modules\npm\node_modules\request\main.js:109:22)
+ERR!     at Request.<anonymous> (C:\Arquivos de programas\nodejs\node_modules\npm\node_modules\request\main.js:198:58)
+ERR!     at Request.emit (events.js:88:20)
+ERR!     at ClientRequest.<anonymous> (C:\Arquivos de programas\nodejs\node_modules\npm\node_modules\request\main.js:195:10)
+ERR!     at ClientRequest.emit (events.js:67:17)
+ERR!     at CleartextStream.<anonymous> (http.js:1127:11)
+ERR!     at CleartextStream.emit (events.js:67:17)
+ERR! You may report this log at:
+ERR!     <http://github.com/isaacs/npm/issues>
+ERR! or email it to:
+ERR!     <npm-@googlegroups.com>
+ERR! 
+ERR! System Windows_NT 5.1.2600
+ERR! command "C:\\Arquivos de programas\\nodejs\\\\node.exe" "C:\\Arquivos de programas\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "formidable"
+ERR! cwd C:\Git\NodeStart
+ERR! node -v v0.6.7
+ERR! npm -v 1.1.0-1
+ERR! message failed to fetch from registry: formidable
+verbose exit [ 1, true ]
