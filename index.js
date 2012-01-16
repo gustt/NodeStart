@@ -6,7 +6,7 @@
 
 var servidor = require("./servidor");
 var roteador = require("./roteador");
-var manipuladorRequisicoes = require("./manipuladorRequisicoes.js");
+var manipuladorRequisicoes = require("./manipuladorRequisicoes");
 
 var manipuladores = [];
 manipuladores["/"] = manipuladorRequisicoes.iniciar;

@@ -22,11 +22,8 @@ function iniciar(rota, manipuladores){
 		var nomePasta = url.parse(request.url).pathname;
 		console.log("Requisição recebida...");
 		
-		rota(nomePasta, manipuladores);
+		var resposta = 	rota(nomePasta, manipuladores, response);
 		
-		response.writeHead(200, {"Content-Type" : "text/plain"});
-		response.write("Hello Word");
-		response.end();
 		console.log("\n\n");
 	};
 	

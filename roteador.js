@@ -9,13 +9,17 @@
  * @param {String} nomePasta Caminho url.parse(request.url).pathname
  * @param {Array} manipuladores Lista de Manipuladores de Requisição
  */
-var rota = function(nomePasta, manipuladores){
+var rota = function(nomePasta, manipuladores, response){
 	console.log("A rota aponta para " + nomePasta);
 	
 	if(typeof manipuladores[nomePasta] === 'function'){
-		manipuladores[nomePasta]();
+		return manipuladores[nomePasta](response);
 	} else {
-		console.log("Não existe manipulador para " + nomePasta);
+		response.writeHead(404, {"Content-Type" : "text/html",
+								 "chartset":"utf-8"});
+								 
+		response.write("P&aacute;gina n&atilde;o encontrada");
+		response.end();
 	}
 };
 
