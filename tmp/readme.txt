@@ -1,0 +1,1 @@
+* Diretório que recebe as imagens postadas
