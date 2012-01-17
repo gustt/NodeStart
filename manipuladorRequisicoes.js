@@ -6,6 +6,7 @@
 
 var exec = require("child_process").exec;
 var querystring = require("querystring");
+var fs = require("fs");
 
 /**
  * 
@@ -20,19 +21,19 @@ var iniciar = function(response){
 						"<meta http-equiv='Content-Type' content='text/html' charset='UTF-8' />" +
 					"</head>" +
 					"<body>" +
-						"<form action='/atualizar' method='post'>" +
-							"<textarea name='text' rows='20' cols='60' ></textarea>" +
-							"<input type='submit' value='Enviar' />" +
+						"<form action='/atualizar' method='post' enctype='multipart/form-data'>" +
+							"<input type='file' name='postagem' />"+
+							"<input type='submit' value='Enviar Arquivo' />" +
 						"</form>" + 
 					"</body>" + 
 				"</html>";
 								
 	response.write(body);
-	response.end();
+	response.end();	
 };
 
 /**
- * 
+ * Manipulador de atualização
  */
 var atualizar = function(response, dadosPostados){
 	console.log("Requisição de ação 'atualizar' foi invocada!");
@@ -41,5 +42,24 @@ var atualizar = function(response, dadosPostados){
 	response.end();
 };
 
+/**
+ * Manipulador para vizualiar arquivos postados
+ */
+var visualizar = function(response, dadosPostados){
+	console.log("Requisição de ação 'visualizar' foi invocada")
+	fs.readFile("\spok.jpg", "binary", function(error, file){
+		if(error){
+			response.writeHead(501, {"Content-type": "text/plain"});
+			response.write(error + "\n");
+			response.end();
+		}else{
+			response.writeHead(200, {"Content-type": "image/jpg"});
+			response.write(file, "binary");
+			response.end();
+		}
+	})
+};
+
 exports.iniciar = iniciar;
 exports.atualizar = atualizar;
+exports.visualizar = visualizar;

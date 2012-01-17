@@ -12,5 +12,6 @@ var manipuladores = [];
 manipuladores["/"] = manipuladorRequisicoes.iniciar;
 manipuladores["/iniciar"] = manipuladorRequisicoes.iniciar;
 manipuladores["/atualizar"] = manipuladorRequisicoes.atualizar;
+manipuladores["/visualizar"] = manipuladorRequisicoes.visualizar;
 
 servidor.iniciar(roteador.rota, manipuladores);
