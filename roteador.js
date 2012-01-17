@@ -15,8 +15,11 @@ var rota = function(nomePasta, manipuladores, response, request){
 	console.log("A rota aponta para " + nomePasta);
 	
 	if(typeof manipuladores[nomePasta] === 'function'){
+		console.log("Requisição de ação '" + nomePasta + "' foi invocada")
 		return manipuladores[nomePasta](response, request);
 	} else {
+		console.log("Manipulador '" + nomePasta +"' não foi definido.");
+		
 		response.writeHead(404, {"Content-Type" : "text/html",
 								 "chartset":"utf-8"});
 								 

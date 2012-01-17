@@ -13,5 +13,6 @@ manipuladores["/"] = manipuladorRequisicoes.iniciar;
 manipuladores["/iniciar"] = manipuladorRequisicoes.iniciar;
 manipuladores["/atualizar"] = manipuladorRequisicoes.atualizar;
 manipuladores["/visualizar"] = manipuladorRequisicoes.visualizar;
+manipuladores["/postagem"] = manipuladorRequisicoes.postagem;			
 
 servidor.iniciar(roteador.rota, manipuladores);

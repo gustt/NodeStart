@@ -20,7 +20,7 @@ function iniciar(rota, manipuladores){
 	 */
 	var aoRequerer =  function (request, response){
 		var nomePasta = url.parse(request.url).pathname;
-		console.log("◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘")
+		console.log("░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░")
 		console.log("Requisição recebida...");
 		rota(nomePasta, manipuladores, response, request);
 	};
@@ -29,7 +29,7 @@ function iniciar(rota, manipuladores){
 	 * Executa servidor HTTP
 	 */
 	http.createServer(aoRequerer).listen(666);
-	console.log("Servidor iniciado...\n\n");
+	console.log("Servidor iniciado...\n");
 }
 
 exports.iniciar = iniciar;
