@@ -9,9 +9,11 @@ var querystring = require("querystring");
 var fs = require("fs");
 
 /**
- * 
+ * Inicia formulário
+ * @param {Object} response Objeto HTTP Response
+ * @param {Object} request Objeto HTTP Request
  */
-var iniciar = function(response){
+var iniciar = function(response, request){
 	console.log("Requisição de ação 'iniciar' foi invocada!");
 	
 	response.writeHead(200, {"Content-Type" : "text/html",
@@ -33,19 +35,23 @@ var iniciar = function(response){
 };
 
 /**
- * Manipulador de atualização
+ * Recebe o post
+ * @param {Object} response Objeto HTTP Response
+ * @param {Object} request Objeto HTTP Request
  */
-var atualizar = function(response, dadosPostados){
+var atualizar = function(response, request){
 	console.log("Requisição de ação 'atualizar' foi invocada!");
-	response.writeHead(200, {"Content-Type" : "text/html" });
+	response.writeHead(200, {"Content-Type" : "text/plain" });
 	response.write("Dados recebidos: " + querystring.parse(dadosPostados).text);
 	response.end();
 };
 
 /**
  * Manipulador para vizualiar arquivos postados
+ * @param {Object} response Objeto HTTP Response
+ * @param {Object} request Objeto HTTP Request
  */
-var visualizar = function(response, dadosPostados){
+var visualizar = function(response, request){
 	console.log("Requisição de ação 'visualizar' foi invocada")
 	fs.readFile("\spok.jpg", "binary", function(error, file){
 		if(error){

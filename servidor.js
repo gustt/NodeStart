@@ -20,19 +20,9 @@ function iniciar(rota, manipuladores){
 	 */
 	var aoRequerer =  function (request, response){
 		var nomePasta = url.parse(request.url).pathname;
-		var dadosPostados = "";
-		console.log("\n\n\n╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦╩╬╦")
+		console.log("◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘")
 		console.log("Requisição recebida...");
-		
-		request.setEncoding("utf8");
-		request.addListener("data", function(parteDadosPostados){
-			dadosPostados += parteDadosPostados;
-			console.log("» » Dados foram recebidos: \n '" + parteDadosPostados + "'");
-		})
-		
-		request.addListener("end", function(){
-			rota(nomePasta, manipuladores, response, dadosPostados);		
-		})
+		rota(nomePasta, manipuladores, response, request);
 	};
 	
 	/**
