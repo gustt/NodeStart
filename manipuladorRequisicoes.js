@@ -43,10 +43,13 @@ var postagem = function(response, request){
 	var form = new formidable.IncomingForm();
 	form.parse(request, function(error, fields, files){
 		console.log("Manipulação concluída");
-		fs.renameSync(files.postagem.path, "tmp/" + files.postagem.name);
+		
+		var caminhoFinal = "tmp/" + files.postagem.name;
+		fs.renameSync(files.postagem.path, caminhoFinal);
+		
 		response.writeHead(200, {"Content-Type" : "text/html" });
 		response.write("Imagem recebida:<br />");
-		response.write("<img src='/visualizar?src=" + files.postagem.name +
+		response.write("<img src='/visualizar?src=" + caminhoFinal +
 							"&type=" + files.postagem.type + "' alt='Imagem enviada pelo formul&aacute;rio' />");
 		response.end();		
 	});
@@ -71,16 +74,20 @@ var atualizar = function(response, request){
 var visualizar = function(response, request){
 	var params = querystring.parse(request.url.replace("/visualizar?",""));
 	fs.readFile(params.src, "binary", function(error, file){
-		console.log(params);
-		if(error){
-			response.writeHead(200, {"Content-type": "text/plain"});
-			response.write(error + "\n");
-		}else{
-			response.writeHead(200, {"Content-type": params.type});
-			response.write(file, "binary");
+		try{
+			console.log(params);
+			if(error){
+				response.writeHead(501, {"Content-type": "text/plain"});
+				response.write(error + "\n");
+			}else{
+				response.writeHead(200, {"Content-type": params.type});
+				response.write(file, "binary");
+			}
+		}catch(e){
+			console.log(e);
 		}
 		response.end();
-	})
+	});
 };
 
 exports.iniciar = iniciar;
